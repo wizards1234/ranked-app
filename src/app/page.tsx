@@ -1,4 +1,6 @@
 import Navigation from "@/components/Navigation"
+import FeaturedRankings from "@/components/FeaturedRankings"
+import TrendingRankings from "@/components/TrendingRankings"
 
 export default function Home() {
   return (
@@ -34,6 +36,17 @@ export default function Home() {
           </div>
         </div>
 
+        {/* Featured Rankings */}
+        <div className="mt-16">
+          <FeaturedRankings />
+        </div>
+
+        {/* Trending Rankings */}
+        <div className="mt-16">
+          <TrendingRankings limit={5} />
+        </div>
+
+        {/* Popular Categories */}
         <div className="mt-16">
           <h2 className="text-2xl font-bold text-gray-900 text-center mb-8">
             Popular Categories
