@@ -2,6 +2,8 @@
 
 import { useState } from "react"
 import { Heart, MessageCircle, Share2, Eye } from "lucide-react"
+import CommentsSection from "./CommentsSection"
+import EmojiReactions from "./EmojiReactions"
 
 interface RankingItem {
   id: string
@@ -39,9 +41,10 @@ interface Ranking {
 interface RankingDisplayProps {
   ranking: Ranking
   showActions?: boolean
+  showComments?: boolean
 }
 
-export default function RankingDisplay({ ranking, showActions = true }: RankingDisplayProps) {
+export default function RankingDisplay({ ranking, showActions = true, showComments = true }: RankingDisplayProps) {
   const [isLiked, setIsLiked] = useState(false)
   const [likeCount, setLikeCount] = useState(ranking.likeCount)
 
@@ -197,6 +200,24 @@ export default function RankingDisplay({ ranking, showActions = true }: RankingD
               <span>Share</span>
             </button>
           </div>
+
+          {/* Emoji Reactions */}
+          <div className="mt-4">
+            <EmojiReactions
+              targetType="ranking"
+              targetId={ranking.id}
+            />
+          </div>
+        </div>
+      )}
+
+      {/* Comments Section */}
+      {showComments && (
+        <div className="mt-6">
+          <CommentsSection
+            rankingId={ranking.id}
+            allowComments={ranking.allowComments}
+          />
         </div>
       )}
     </div>
