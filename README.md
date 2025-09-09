@@ -1,1 +1,1 @@
-# News App
+# Ranked App
